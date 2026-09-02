@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #fff8e7;
+  color: #3d2817;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.app {
+  min-height: 100vh;
+  padding: 25px 16px 40px;
+  background:
+    radial-gradient(circle at top, rgba(255, 210, 120, 0.35), transparent 40%),
+    #fff8e7;
+}
+
+h1 {
+  text-align: center;
+  font-size: 42px;
+  margin-top: 20px;
+  color: #8b4a16;
+}
+
+.subtitle {
+  text-align: center;
+  margin: 8px 0 30px;
+  color: #795548;
+}
+
+/* =========================
+   CHANT CARDS
+========================= */
+
+.chant-grid {
+  max-width: 900px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.chant-card {
+  min-height: 170px;
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(139, 74, 22, 0.12);
+  box-shadow: 0 8px 25px rgba(100, 60, 20, 0.12);
+  transition: 0.25s ease;
+  text-align: center;
+}
+
+.chant-card:hover {
+  transform: translateY(-4px);
+}
+
+.chant-card:active {
+  transform: scale(0.97);
+}
+
+.chant-card h2 {
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+.chant-icon {
+  font-size: 42px;
+}
+
+/* Full-width mantra */
+
+.mantra-card {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 25px rgba(100, 60, 20, 0.12);
+  text-align: center;
+}
+
+.mantra-card p {
+  margin-top: 12px;
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+/* =========================
+   JAP SCREEN
+========================= */
+
+.jap-screen {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+  background:
+    radial-gradient(circle at top, rgba(255, 210, 120, 0.4), transparent 45%),
+    #fff8e7;
+}
+
+.jap-content {
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.back-btn {
+  padding: 10px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #6d3b13;
+  box-shadow: 0 4px 15px rgba(80, 50, 20, 0.12);
+}
+
+.jap-image {
+  width: 190px;
+  height: 190px;
+  margin: 20px auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 80px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 10px 35px rgba(120, 70, 20, 0.18);
+}
+
+.jap-content h2 {
+  font-size: 30px;
+  margin: 15px 0;
+  color: #8b4a16;
+}
+
+/* =========================
+   COUNTER
+========================= */
+
+.counter-circle {
+  width: 220px;
+  height: 220px;
+  margin: 25px auto;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  border: 5px solid rgba(180, 110, 30, 0.25);
+  box-shadow: 0 12px 40px rgba(100, 60, 20, 0.15);
+}
+
+#count {
+  font-size: 55px;
+  font-weight: 700;
+  color: #8b4a16;
+}
+
+.counter-circle small {
+  color: #795548;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-area {
+  max-width: 450px;
+  margin: auto;
+}
+
+.progress-bar {
+  height: 14px;
+  background: rgba(120, 80, 40, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  border-radius: 20px;
+  background: #c47a24;
+  transition: width 0.25s ease;
+}
+
+#progressText {
+  margin-top: 8px;
+  color: #795548;
+}
+
+/* =========================
+   JAPA BUTTON
+========================= */
+
+.jap-button {
+  width: 105px;
+  height: 105px;
+  margin-top: 30px;
+  border-radius: 50%;
+  background: #c47a24;
+  color: white;
+  font-size: 42px;
+  box-shadow: 0 10px 25px rgba(120, 70, 20, 0.25);
+  transition: 0.15s ease;
+}
+
+.jap-button:active {
+  transform: scale(0.92);
+}
+
+.tap-text {
+  margin-top: 10px;
+  color: #795548;
+}
+
+.reset-button {
+  margin-top: 25px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(120, 80, 40, 0.1);
+  color: #6d3b13;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  h1 {
+    font-size: 34px;
+  }
+
+  .chant-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .chant-card {
+    min-height: 145px;
+    padding: 15px;
+  }
+
+  .chant-card h2 {
+    font-size: 17px;
+  }
+
+  .chant-icon {
+    font-size: 34px;
+  }
+
+  .mantra-card p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .chant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .jap-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .counter-circle {
+    width: 190px;
+    height: 190px;
+  }
+
+  #count {
+    font-size: 48px;
+  }
+}
