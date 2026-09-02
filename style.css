@@ -302,3 +302,106 @@ h1 {
     font-size: 48px;
   }
     }
+/* =========================
+   RESET CONFIRMATION MODAL
+========================= */
+
+.reset-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(60, 40, 20, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.reset-box {
+  width: min(100%, 360px);
+
+  padding: 28px 22px;
+
+  border-radius: 28px;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 220, 150, 0.45),
+      transparent 60%
+    ),
+    #fffaf0;
+
+  box-shadow:
+    0 20px 60px rgba(70, 45, 20, 0.22);
+
+  border: 1px solid rgba(180, 120, 50, 0.15);
+
+  animation: resetPopup 0.2s ease-out;
+}
+
+.reset-symbol {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.reset-box h3 {
+  font-size: 24px;
+  color: #7b461c;
+  margin-bottom: 8px;
+}
+
+.reset-box p {
+  color: #795548;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.reset-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.reset-actions button {
+  flex: 1;
+  padding: 12px 10px;
+
+  border-radius: 16px;
+
+  font-weight: 600;
+
+  transition: transform 0.15s ease;
+}
+
+.reset-actions button:active {
+  transform: scale(0.96);
+}
+
+.reset-cancel {
+  background: #f3eadc;
+  color: #6d4c35;
+}
+
+.reset-confirm {
+  background: #d6a15c;
+  color: white;
+}
+
+@keyframes resetPopup {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
