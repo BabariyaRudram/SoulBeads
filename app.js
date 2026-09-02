@@ -1,78 +1,236 @@
+"use strict";
+
+/*
+  SoulBeads
+  Basic Jap Counter
+
+  Data is stored locally in the browser.
+  No account, tracking, or external server is required.
+*/
+
 const TARGET = 1008;
 
 let currentChant = "Radhe Radhe";
-let count = Number(localStorage.getItem("soulbeads_count")) || 0;
+let count = 0;
 
 
-// Open Jap screen
+/* =========================
+   STORAGE
+========================= */
+
+function getStorageKey() {
+  return "soulbeads_count_" + currentChant;
+}
+
+
+function loadCount() {
+  const saved = localStorage.getItem(getStorageKey());
+
+  count = saved ? Number(saved) : 0;
+
+  if (!Number.isFinite(count) || count < 0) {
+    count = 0;
+  }
+
+  count = Math.floor(count);
+
+  updateCounter();
+}
+
+
+function saveCount() {
+  localStorage.setItem(
+    getStorageKey(),
+    String(count)
+  );
+}
+
+
+/* =========================
+   OPEN JAP SCREEN
+========================= */
+
 function openJap(name, icon = "📿") {
-  currentChant = name;
 
-  document.querySelector(".app").style.display = "none";
-  document.getElementById("japScreen").style.display = "block";
+  currentChant = String(name);
 
-  document.getElementById("japNaam").textContent = name;
-  document.getElementById("japImage").textContent = icon;
+  const home = document.querySelector(".app");
+  const japScreen = document.getElementById("japScreen");
+
+  if (!home || !japScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  japScreen.style.display = "block";
+
+  const naamElement = document.getElementById("japNaam");
+  const imageElement = document.getElementById("japImage");
+
+  if (naamElement) {
+    naamElement.textContent = currentChant;
+  }
+
+  if (imageElement) {
+    imageElement.textContent = icon;
+  }
 
   loadCount();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 
-// Go back to Home
+/* =========================
+   GO HOME
+========================= */
+
 function goHome() {
-  document.getElementById("japScreen").style.display = "none";
-  document.querySelector(".app").style.display = "block";
+
+  const home = document.querySelector(".app");
+  const japScreen = document.getElementById("japScreen");
+
+  if (!home || !japScreen) {
+    return;
+  }
+
+  japScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 }
 
 
-// Add one Jap
+/* =========================
+   ADD ONE JAP
+========================= */
+
 function doJap() {
-  count++;
 
-  localStorage.setItem("soulbeads_count", count);
+  /*
+    Keep the counter within a safe browser number range.
+  */
 
+  if (count >= Number.MAX_SAFE_INTEGER) {
+    return;
+  }
+
+  count += 1;
+
+  saveCount();
   updateCounter();
+
+  /*
+    Small vibration on supported phones.
+    It is optional and does nothing if unavailable.
+  */
+
+  if ("vibrate" in navigator) {
+    navigator.vibrate(15);
+  }
 }
 
 
-// Load saved count
-function loadCount() {
-  count = Number(localStorage.getItem("soulbeads_count")) || 0;
-  updateCounter();
-}
+/* =========================
+   UPDATE DISPLAY
+========================= */
 
-
-// Update counter and progress
 function updateCounter() {
 
-  document.getElementById("count").textContent = count;
+  const countElement = document.getElementById("count");
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
 
-  const percentage = Math.min((count / TARGET) * 100, 100);
+  if (!countElement) {
+    return;
+  }
 
-  document.getElementById("progressBar").style.width =
-    percentage + "%";
+  countElement.textContent =
+    count.toLocaleString("en-IN");
 
-  document.getElementById("progressText").textContent =
-    Math.floor(percentage) + "% complete";
+
+  const percentage =
+    Math.min((count / TARGET) * 100, 100);
+
+
+  if (progressBar) {
+    progressBar.style.width =
+      percentage + "%";
+  }
+
+
+  if (progressText) {
+
+    if (count >= TARGET) {
+
+      progressText.textContent =
+        "Target completed 🪷🙏🏻";
+
+    } else {
+
+      progressText.textContent =
+        Math.floor(percentage) +
+        "% complete";
+
+    }
+  }
 }
 
 
-// Reset count
+/* =========================
+   RESET
+========================= */
+
 function resetJap() {
 
-  const confirmReset = confirm(
-    "Are you sure you want to reset your Jap count?"
+  const confirmed = window.confirm(
+    "Reset the count for " +
+    currentChant +
+    "?"
   );
 
-  if (!confirmReset) return;
+  if (!confirmed) {
+    return;
+  }
 
   count = 0;
 
-  localStorage.setItem("soulbeads_count", 0);
-
+  saveCount();
   updateCounter();
 }
 
 
-// Start with saved progress
-updateCounter();
+/* =========================
+   STARTUP
+========================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    /*
+      We don't open the Jap screen automatically.
+      The user chooses a Naam from Home.
+    */
+
+    const saved = localStorage.getItem(
+      "soulbeads_count_" + currentChant
+    );
+
+    count = saved ? Number(saved) : 0;
+
+    if (!Number.isFinite(count) || count < 0) {
+      count = 0;
+    }
+
+    count = Math.floor(count);
+
+    updateCounter();
+  }
+);
