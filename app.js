@@ -151,6 +151,74 @@ function updateTargetDisplay() {
       target.toLocaleString("en-IN");
   }
 }
+/* =========================
+   DAILY PROGRESS
+========================= */
+
+function getTodayKey() {
+
+  const today = new Date();
+
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+
+  return year + "-" + month + "-" + day;
+}
+
+
+function getDailyStorageKey() {
+
+  return "soulbeads_daily_" + getTodayKey();
+}
+
+
+function loadDailyProgress() {
+
+  const saved =
+    localStorage.getItem(getDailyStorageKey());
+
+  if (!saved) {
+    return {};
+  }
+
+  try {
+
+    const data = JSON.parse(saved);
+
+    if (
+      typeof data !== "object" ||
+      data === null ||
+      Array.isArray(data)
+    ) {
+      return {};
+    }
+
+    return data;
+
+  } catch (error) {
+
+    return {};
+  }
+}
+
+
+function saveDailyProgress() {
+
+  const dailyProgress =
+    loadDailyProgress();
+
+  if (!Number.isFinite(dailyProgress[currentChant])) {
+    dailyProgress[currentChant] = 0;
+  }
+
+  dailyProgress[currentChant] += 1;
+
+  localStorage.setItem(
+    getDailyStorageKey(),
+    JSON.stringify(dailyProgress)
+  );
+}
 
 /* =========================
    OPEN JAP SCREEN
@@ -220,10 +288,6 @@ function goHome() {
 
 function doJap() {
 
-  /*
-    Keep the counter within a safe browser number range.
-  */
-
   if (count >= Number.MAX_SAFE_INTEGER) {
     return;
   }
@@ -231,12 +295,8 @@ function doJap() {
   count += 1;
 
   saveCount();
+  saveDailyProgress();
   updateCounter();
-
-  /*
-    Small vibration on supported phones.
-    It is optional and does nothing if unavailable.
-  */
 
   if ("vibrate" in navigator) {
     navigator.vibrate(15);
