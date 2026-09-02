@@ -198,7 +198,66 @@
         Radhe Radhe
       </h2>
 
+<!-- =========================
+     JAP TARGET
+========================= -->
 
+<div class="target-section">
+
+  <p class="target-title">
+    Choose your Jap target 🪷
+  </p>
+
+  <div class="target-options">
+
+    <button onclick="setTarget(11)">11</button>
+
+    <button onclick="setTarget(21)">21</button>
+
+    <button onclick="setTarget(51)">51</button>
+
+    <button onclick="setTarget(108)">108</button>
+
+    <button onclick="setTarget(501)">501</button>
+
+    <button
+      class="target-selected"
+      onclick="setTarget(1008)"
+    >
+      1008
+    </button>
+
+    <button
+      class="custom-target-btn"
+      onclick="showCustomTarget()"
+    >
+      Custom
+    </button>
+
+  </div>
+
+  <div
+    id="customTargetArea"
+    class="custom-target-area"
+  >
+
+    <input
+      id="customTargetInput"
+      type="number"
+      min="1"
+      max="1000000"
+      inputmode="numeric"
+      placeholder="Enter target"
+    >
+
+    <button onclick="applyCustomTarget()">
+      Set Target
+    </button>
+
+  </div>
+
+</div>
+      
       <!-- Counter -->
 
       <div class="counter-circle">
