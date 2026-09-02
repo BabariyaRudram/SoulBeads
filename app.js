@@ -8,10 +8,9 @@
   No account, tracking, or external server is required.
 */
 
-const TARGET = 1008;
-
 let currentChant = "Radhe Radhe";
 let count = 0;
+let target = 1008;
 
 
 /* =========================
@@ -44,7 +43,114 @@ function saveCount() {
     String(count)
   );
 }
+/* =========================
+   JAP TARGET
+========================= */
 
+function getTargetKey() {
+  return "soulbeads_target_" + currentChant;
+}
+
+
+function loadTarget() {
+
+  const saved = localStorage.getItem(getTargetKey());
+
+  target = saved ? Number(saved) : 1008;
+
+  if (!Number.isFinite(target) || target < 1) {
+    target = 1008;
+  }
+
+  target = Math.floor(target);
+
+  updateTargetDisplay();
+}
+
+
+function saveTarget() {
+
+  localStorage.setItem(
+    getTargetKey(),
+    String(target)
+  );
+}
+
+
+function setTarget(newTarget) {
+
+  newTarget = Number(newTarget);
+
+  if (!Number.isFinite(newTarget) || newTarget < 1) {
+    return;
+  }
+
+  target = Math.floor(newTarget);
+
+  saveTarget();
+  updateTargetDisplay();
+  updateCounter();
+}
+
+
+function showCustomTarget() {
+
+  const area = document.getElementById("customTargetArea");
+  const input = document.getElementById("customTargetInput");
+
+  if (area) {
+    area.style.display = "flex";
+  }
+
+  if (input) {
+    input.focus();
+  }
+}
+
+
+function applyCustomTarget() {
+
+  const input =
+    document.getElementById("customTargetInput");
+
+  if (!input) {
+    return;
+  }
+
+  const value = Number(input.value);
+
+  if (!Number.isFinite(value) || value < 1) {
+    input.value = "";
+    return;
+  }
+
+  target = Math.floor(value);
+
+  saveTarget();
+  updateTargetDisplay();
+  updateCounter();
+
+  input.value = "";
+
+  const area =
+    document.getElementById("customTargetArea");
+
+  if (area) {
+    area.style.display = "none";
+  }
+}
+
+
+function updateTargetDisplay() {
+
+  const targetElement =
+    document.getElementById("targetDisplay");
+
+  if (targetElement) {
+    targetElement.textContent =
+      target.toLocaleString("en-IN");
+  }
+}
 
 /* =========================
    OPEN JAP SCREEN
@@ -53,6 +159,7 @@ function saveCount() {
 function openJap(name, icon = "📿") {
 
   currentChant = String(name);
+  loadTarget();
 
   const home = document.querySelector(".app");
   const japScreen = document.getElementById("japScreen");
@@ -156,7 +263,7 @@ function updateCounter() {
 
 
   const percentage =
-    Math.min((count / TARGET) * 100, 100);
+  Math.min((count / target) * 100, 100);
 
 
   if (progressBar) {
@@ -167,7 +274,7 @@ function updateCounter() {
 
   if (progressText) {
 
-    if (count >= TARGET) {
+    if (count >= target) {
 
       progressText.textContent =
         "Target completed 🪷🙏🏻";
