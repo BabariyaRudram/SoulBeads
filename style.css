@@ -283,6 +283,24 @@ h1 {
 }
 
 @media (max-width: 420px) {
+  .target-options {
+  gap: 7px;
+}
+
+.target-options button {
+  min-width: 55px;
+  padding: 9px 10px;
+}
+
+.custom-target-area {
+  flex-direction: column;
+}
+
+.custom-target-area input,
+.custom-target-area button {
+  width: 100%;
+  max-width: 260px;
+}
 
   .chant-grid {
     grid-template-columns: 1fr;
@@ -404,4 +422,108 @@ h1 {
     opacity: 1;
     transform: scale(1);
   }
+}
+/* =========================
+   JAP TARGET
+========================= */
+
+.target-section {
+  max-width: 500px;
+  margin: 10px auto 25px;
+  text-align: center;
+}
+
+.target-title {
+  margin-bottom: 14px;
+  color: #795548;
+  font-size: 16px;
+}
+
+.target-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px;
+}
+
+.target-options button {
+  min-width: 58px;
+  padding: 10px 13px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.82);
+  color: #6d421e;
+
+  border: 1px solid rgba(139, 74, 22, 0.12);
+
+  box-shadow: 0 4px 14px rgba(100, 60, 20, 0.08);
+
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.target-options button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(100, 60, 20, 0.12);
+}
+
+.target-options button:active {
+  transform: scale(0.95);
+}
+
+.target-options .target-selected {
+  background: #d6a15c;
+  color: white;
+  box-shadow: 0 6px 18px rgba(180, 120, 50, 0.22);
+}
+
+.custom-target-area {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-top: 14px;
+}
+
+.custom-target-area input {
+  width: 145px;
+  padding: 11px 13px;
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(139, 74, 22, 0.18);
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: #4e342e;
+
+  font-size: 16px;
+}
+
+.custom-target-area input:focus {
+  border-color: rgba(180, 120, 50, 0.5);
+
+  box-shadow:
+    0 0 0 3px rgba(214, 161, 92, 0.14);
+}
+
+.custom-target-area button {
+  padding: 11px 15px;
+
+  border-radius: 15px;
+
+  background: #c58a45;
+  color: white;
+
+  box-shadow: 0 5px 15px rgba(120, 70, 20, 0.15);
+}
+
+.custom-target-area button:active {
+  transform: scale(0.96);
 }
