@@ -259,7 +259,40 @@
 
   </section>
 
+<!-- Reset Confirmation Modal -->
 
+<div id="resetModal" class="reset-modal">
+
+  <div class="reset-box">
+
+    <div class="reset-symbol">📿</div>
+
+    <h3>Do you want to reset?</h3>
+
+    <p>Your current Jap count will return to 0.</p>
+
+    <div class="reset-actions">
+
+      <button
+        class="reset-cancel"
+        onclick="closeResetModal()"
+      >
+        Cancel
+      </button>
+
+      <button
+        class="reset-confirm"
+        onclick="confirmReset()"
+      >
+        Yes, Reset
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+  
   <!-- =========================
        JAVASCRIPT
   ========================== -->
