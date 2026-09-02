@@ -189,20 +189,32 @@ function updateCounter() {
 
 function resetJap() {
 
-  const confirmed = window.confirm(
-    "Reset the count for " +
-    currentChant +
-    "?"
-  );
+  const modal = document.getElementById("resetModal");
 
-  if (!confirmed) {
-    return;
+  if (modal) {
+    modal.style.display = "flex";
   }
+}
+
+
+function closeResetModal() {
+
+  const modal = document.getElementById("resetModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+function confirmReset() {
 
   count = 0;
 
   saveCount();
   updateCounter();
+
+  closeResetModal();
 }
 
 
