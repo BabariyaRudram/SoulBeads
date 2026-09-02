@@ -162,9 +162,9 @@
 
     <section class="naam-grid">
 
-      <button class="naam-card">
-        <span class="emoji">💐♥️</span>
-        <span class="naam">Radhe Radhe</span>
+      <button class="naam-card" onclick="openJap('Radhe Radhe','💐♥️')">
+  <span class="emoji">💐♥️</span>
+  <span class="naam">Radhe Radhe</span>
       </button>
 
       <button class="naam-card">
@@ -203,6 +203,44 @@
     </footer>
 
   </main>
+  <section id="japScreen" class="jap-screen">
+
+  <button class="back-btn" onclick="goHome()">← Back</button>
+
+  <div class="jap-content">
+
+    <div id="japImage" class="jap-image">
+      🪷
+    </div>
+
+    <h2 id="japNaam">Radhe Radhe</h2>
+
+    <div class="counter-circle">
+      <div id="count">0</div>
+      <small>of 1008</small>
+    </div>
+
+    <div class="progress-area">
+      <div class="progress-bar">
+        <div id="progressBar"></div>
+      </div>
+
+      <p id="progressText">0% complete</p>
+    </div>
+
+    <button class="jap-button" onclick="doJap()">
+      📿
+    </button>
+
+    <p class="tap-text">Tap to chant</p>
+
+    <button class="reset-button" onclick="resetJap()">
+      Reset Count
+    </button>
+
+  </div>
+
+  </section>
 
 </body>
 </html>
