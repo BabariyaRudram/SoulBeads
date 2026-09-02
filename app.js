@@ -413,3 +413,118 @@ document.addEventListener(
     updateCounter();
   }
 );
+/* =========================
+   DAILY PROGRESS SCREEN
+========================= */
+
+function openDailyProgress() {
+
+  const home = document.querySelector(".app");
+  const dailyScreen = document.getElementById("dailyScreen");
+
+  if (!home || !dailyScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  dailyScreen.style.display = "block";
+
+  updateDailyProgress();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeDailyProgress() {
+
+  const home = document.querySelector(".app");
+  const dailyScreen = document.getElementById("dailyScreen");
+
+  if (!home || !dailyScreen) {
+    return;
+  }
+
+  dailyScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function updateDailyProgress() {
+
+  const dailyData = loadDailyProgress();
+
+  const totalElement =
+    document.getElementById("dailyTotal");
+
+  const listElement =
+    document.getElementById("dailyList");
+
+  const dateElement =
+    document.getElementById("dailyDate");
+
+  if (!totalElement || !listElement) {
+    return;
+  }
+
+  let total = 0;
+
+  listElement.innerHTML = "";
+
+  Object.keys(dailyData).forEach(function (naam) {
+
+    const value = Number(dailyData[naam]);
+
+    if (!Number.isFinite(value) || value <= 0) {
+      return;
+    }
+
+    total += value;
+
+    const card = document.createElement("div");
+
+    card.className = "daily-item";
+
+    card.innerHTML =
+      "<span>" +
+      naam +
+      "</span>" +
+      "<strong>" +
+      value.toLocaleString("en-IN") +
+      "</strong>";
+
+    listElement.appendChild(card);
+  });
+
+  totalElement.textContent =
+    total.toLocaleString("en-IN");
+
+  if (dateElement) {
+
+    const today = new Date();
+
+    dateElement.textContent =
+      today.toLocaleDateString(
+        "en-IN",
+        {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }
+      );
+  }
+
+  if (Object.keys(dailyData).length === 0) {
+
+    listElement.innerHTML =
+      '<p class="empty-daily">No Jap recorded today yet 🪷</p>';
+  }
+}
