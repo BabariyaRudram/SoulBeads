@@ -1,3 +1,39 @@
+/* =========================
+   DAILY PROGRESS
+========================= */
+
+.daily-screen {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 210, 120, 0.4),
+      transparent 45%
+    ),
+    #fff8e7;
+}
+
+.daily-content {
+  max-width: 600px;
+  margin: 25px auto;
+}
+
+.daily-icon {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+.daily-content h2 {
+  font-size: 32px;
+  color: #8b4a16;
+}
+
+/* ...rest of your Daily CSS... */
+
 * {
   box-sizing: border-box;
   margin: 0;
