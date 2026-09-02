@@ -2,245 +2,268 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FFF8E7">
-  <title>SoulBeads 🪷</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,.8), transparent 40%),
-        linear-gradient(135deg, #FFF8E7, #F7E7CE);
-      color: #4b3525;
-      padding: 20px;
-    }
+  <meta
+    name="description"
+    content="SoulBeads — a peaceful digital space for Naam Jap and daily devotion."
+  >
 
-    .app {
-      max-width: 700px;
-      margin: auto;
-    }
+  <title>SoulBeads 📿</title>
 
-    .header {
-      text-align: center;
-      padding: 25px 10px 30px;
-    }
-
-    .header .symbol {
-      font-size: 34px;
-      margin-bottom: 8px;
-    }
-
-    .header h1 {
-      font-size: 38px;
-      letter-spacing: 1px;
-    }
-
-    .header p {
-      margin-top: 8px;
-      opacity: .75;
-      font-size: 15px;
-    }
-
-    .naam-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-
-    .naam-card {
-      border: 0;
-      min-height: 150px;
-      border-radius: 24px;
-      padding: 20px 12px;
-      background: rgba(255,255,255,.55);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 25px rgba(80,50,20,.10);
-      color: #4b3525;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s;
-      font-family: inherit;
-    }
-
-    .naam-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(80,50,20,.16);
-    }
-
-    .naam-card:active {
-      transform: scale(.97);
-    }
-
-    .emoji {
-      font-size: 30px;
-      display: block;
-      margin-bottom: 12px;
-    }
-
-    .naam {
-      font-size: 19px;
-      font-weight: bold;
-      line-height: 1.35;
-    }
-
-    .mantra-card {
-      margin-top: 15px;
-      width: 100%;
-      border: 0;
-      border-radius: 24px;
-      padding: 25px 18px;
-      background: rgba(255,255,255,.65);
-      box-shadow: 0 8px 25px rgba(80,50,20,.10);
-      color: #4b3525;
-      cursor: pointer;
-      font-family: inherit;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .mantra-card:hover {
-      transform: translateY(-3px);
-    }
-
-    .mantra-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .mantra-text {
-      font-size: 17px;
-      line-height: 1.8;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 35px 10px 15px;
-      opacity: .65;
-      font-size: 13px;
-    }
-
-    @media (max-width: 430px) {
-      body {
-        padding: 14px;
-      }
-
-      .naam-grid {
-        gap: 10px;
-      }
-
-      .naam-card {
-        min-height: 135px;
-      }
-
-      .naam {
-        font-size: 16px;
-      }
-
-      .header h1 {
-        font-size: 32px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <!-- =========================
+       HOME SCREEN
+  ========================== -->
+
   <main class="app">
 
-    <header class="header">
-      <div class="symbol">🪷📿</div>
-      <h1>SoulBeads</h1>
-      <p>A peaceful space for Naam Jap</p>
-    </header>
+    <h1>SoulBeads 📿</h1>
 
-    <section class="naam-grid">
+    <p class="subtitle">
+      Pause. Chant. Remember. 🪷
+    </p>
 
-      <button class="naam-card" onclick="openJap('Radhe Radhe','💐♥️')">
-  <span class="emoji">💐♥️</span>
-  <span class="naam">Radhe Radhe</span>
+
+    <!-- =========================
+         NAAM SELECTION
+    ========================== -->
+
+    <section class="chant-grid">
+
+      <!-- Radhe Radhe -->
+
+      <button
+        class="chant-card"
+        onclick="openJap('Radhe Radhe', '💐♥️')"
+      >
+
+        <div class="chant-icon">
+          💐
+        </div>
+
+        <h2>
+          Radhe Radhe
+        </h2>
+
       </button>
 
-      <button class="naam-card">
-        <span class="emoji">🦚</span>
-        <span class="naam">Radhe Krishna</span>
+
+      <!-- Radhe Krishna -->
+
+      <button
+        class="chant-card"
+        onclick="openJap('Radhe Krishna', '🦚')"
+      >
+
+        <div class="chant-icon">
+          🦚
+        </div>
+
+        <h2>
+          Radhe Krishna
+        </h2>
+
       </button>
 
-      <button class="naam-card">
-        <span class="emoji">🪷</span>
-        <span class="naam">Hare Krishna<br>Hare Ram</span>
+
+      <!-- Hare Krishna -->
+
+      <button
+        class="chant-card"
+        onclick="openJap('Hare Krishna Maha-Mantra', '🪷')"
+      >
+
+        <div class="chant-icon">
+          🪷
+        </div>
+
+        <h2>
+          Hare Krishna Maha-Mantra
+        </h2>
+
       </button>
 
-      <button class="naam-card">
-        <span class="emoji">🫀</span>
-        <span class="naam">Jay Khodiyar Maa</span>
+
+      <!-- Khodiyar Maa -->
+
+      <button
+        class="chant-card"
+        onclick="openJap('Jay Khodiyar Maa', '🫀')"
+      >
+
+        <div class="chant-icon">
+          🫀
+        </div>
+
+        <h2>
+          Jay Khodiyar Maa
+        </h2>
+
       </button>
 
-      <button class="naam-card">
-        <span class="emoji">🕉️</span>
-        <span class="naam">साम्ब सदाशिव</span>
+
+      <!-- Samb Sadashiv -->
+
+      <button
+        class="chant-card"
+        onclick="openJap('साम्ब सदाशिव', '🔱')"
+      >
+
+        <div class="chant-icon">
+          🔱
+        </div>
+
+        <h2>
+          साम्ब सदाशिव
+        </h2>
+
       </button>
 
     </section>
 
-    <button class="mantra-card">
-      <div class="mantra-title">🪷 Krishna Mantra</div>
 
-      <div class="mantra-text">
+    <!-- =========================
+         KRISHNA MANTRA
+    ========================== -->
+
+    <section class="mantra-card">
+
+      <div class="chant-icon">
+        🦚
+      </div>
+
+      <h2>
+        Krishna Mantra
+      </h2>
+
+      <p>
         ॐ कृष्णाय वासुदेवाय हरये परमात्मने।<br>
         प्रणतः क्लेशनाशाय गोविंदाय नमो नमः॥
-      </div>
-    </button>
+      </p>
 
-    <footer class="footer">
-      Made with devotion • SoulBeads 🪷
-    </footer>
+      <button
+        class="chant-card"
+        onclick="openJap('Krishna Mantra', '🦚')"
+        style="margin-top: 18px; min-height: auto; width: 100%;"
+      >
+        Begin Jap 📿
+      </button>
+
+    </section>
 
   </main>
-  <section id="japScreen" class="jap-screen">
 
-  <button class="back-btn" onclick="goHome()">← Back</button>
 
-  <div class="jap-content">
+  <!-- =========================
+       JAP SCREEN
+  ========================== -->
 
-    <div id="japImage" class="jap-image">
-      🪷
-    </div>
+  <section
+    id="japScreen"
+    class="jap-screen"
+  >
 
-    <h2 id="japNaam">Radhe Radhe</h2>
+    <button
+      class="back-btn"
+      onclick="goHome()"
+    >
+      ← Back
+    </button>
 
-    <div class="counter-circle">
-      <div id="count">0</div>
-      <small>of 1008</small>
-    </div>
 
-    <div class="progress-area">
-      <div class="progress-bar">
-        <div id="progressBar"></div>
+    <div class="jap-content">
+
+      <!-- Devotional image / placeholder -->
+
+      <div
+        id="japImage"
+        class="jap-image"
+      >
+        🪷
       </div>
 
-      <p id="progressText">0% complete</p>
+
+      <!-- Selected Naam -->
+
+      <h2 id="japNaam">
+        Radhe Radhe
+      </h2>
+
+
+      <!-- Counter -->
+
+      <div class="counter-circle">
+
+        <div id="count">
+          0
+        </div>
+
+        <small>
+          of 1008
+        </small>
+
+      </div>
+
+
+      <!-- Progress -->
+
+      <div class="progress-area">
+
+        <div class="progress-bar">
+
+          <div id="progressBar"></div>
+
+        </div>
+
+        <p id="progressText">
+          0% complete
+        </p>
+
+      </div>
+
+
+      <!-- Main Jap Button -->
+
+      <button
+        class="jap-button"
+        onclick="doJap()"
+        aria-label="Count one Jap"
+      >
+        📿
+      </button>
+
+      <p class="tap-text">
+        Tap to chant
+      </p>
+
+
+      <!-- Reset -->
+
+      <button
+        class="reset-button"
+        onclick="resetJap()"
+      >
+        Reset Count
+      </button>
+
     </div>
 
-    <button class="jap-button" onclick="doJap()">
-      📿
-    </button>
-
-    <p class="tap-text">Tap to chant</p>
-
-    <button class="reset-button" onclick="resetJap()">
-      Reset Count
-    </button>
-
-  </div>
-
   </section>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
   <script src="app.js"></script>
 
 </body>
