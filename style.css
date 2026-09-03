@@ -974,3 +974,104 @@ body.dark-mode .daily-item {
 body.dark-mode .daily-item strong {
   color: #f5d59a;
 }
+/* =========================
+   SOULBEADS DARK THEME
+========================= */
+
+body.dark-mode {
+  background: #17130f;
+  color: #f5e9d2;
+}
+
+/* Home */
+
+body.dark-mode .app {
+  background: transparent;
+}
+
+body.dark-mode .chant-card,
+body.dark-mode .mantra-card {
+  background: rgba(45, 36, 28, 0.92);
+  color: #f5e9d2;
+  border-color: rgba(255, 220, 170, 0.12);
+}
+
+body.dark-mode .chant-card h3,
+body.dark-mode .mantra-card h3 {
+  color: #f5d59a;
+}
+
+/* Theme settings */
+
+body.dark-mode .theme-settings {
+  background: rgba(45, 36, 28, 0.92);
+  color: #f5e9d2;
+}
+
+body.dark-mode .theme-title {
+  color: #f5d59a;
+}
+
+body.dark-mode .theme-option {
+  background: #30261d;
+  color: #f5d59a;
+  border-color: rgba(255, 220, 170, 0.15);
+}
+
+body.dark-mode .theme-option.theme-selected {
+  background: #c58b45;
+  color: #20160e;
+}
+
+/* Jap screen */
+
+body.dark-mode .jap-screen {
+  background: #17130f;
+  color: #f5e9d2;
+}
+
+body.dark-mode .jap-screen h2 {
+  color: #f5d59a;
+}
+
+body.dark-mode .target-section {
+  background: rgba(45, 36, 28, 0.92);
+  color: #f5e9d2;
+}
+
+body.dark-mode .target-title {
+  color: #f5d59a;
+}
+
+body.dark-mode .target-options button {
+  background: #30261d;
+  color: #f5d59a;
+}
+
+body.dark-mode .counter-circle {
+  background: rgba(45, 36, 28, 0.95);
+  color: #f5e9d2;
+  border-color: rgba(255, 220, 170, 0.2);
+}
+
+/* Daily Progress */
+
+body.dark-mode .daily-screen {
+  background: #17130f;
+  color: #f5e9d2;
+}
+
+body.dark-mode .daily-content h2 {
+  color: #f5d59a;
+}
+
+body.dark-mode .daily-item,
+body.dark-mode .daily-total {
+  background: rgba(45, 36, 28, 0.92);
+  color: #f5e9d2;
+}
+
+body.dark-mode #dailyTotal,
+body.dark-mode .daily-item strong {
+  color: #f5d59a;
+}
