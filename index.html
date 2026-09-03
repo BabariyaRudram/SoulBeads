@@ -168,6 +168,12 @@
 >
   📅 Today's Jap Progress
 </button>
+    <button
+  class="history-open-btn"
+  onclick="openHistory()"
+>
+  📜 Jap History
+    </button>
     <!-- Theme Settings -->
 
 <div class="theme-settings">
@@ -250,6 +256,42 @@
     <div
       id="dailyList"
       class="daily-list"
+    >
+    </div>
+
+  </div>
+
+</section>
+  <!-- Jap History -->
+
+<section
+  id="historyScreen"
+  class="history-screen"
+  style="display: none;"
+>
+
+  <button
+    class="back-btn"
+    onclick="closeHistory()"
+  >
+    ← Back
+  </button>
+
+  <div class="history-content">
+
+    <div class="history-icon">
+      📜
+    </div>
+
+    <h2>Jap History</h2>
+
+    <p class="history-subtitle">
+      Your previous Jap progress
+    </p>
+
+    <div
+      id="historyList"
+      class="history-list"
     >
     </div>
 
