@@ -802,3 +802,83 @@ body.dark-mode .theme-toggle {
   color: #f5d59a;
   border-color: rgba(255, 220, 170, 0.15);
 }
+/* =========================
+   THEME SETTINGS
+========================= */
+
+.theme-settings {
+  width: min(900px, 100%);
+  margin: 25px auto 10px;
+  padding: 20px;
+
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.65);
+
+  border: 1px solid rgba(139, 74, 22, 0.1);
+  border-radius: 22px;
+
+  box-shadow:
+    0 7px 22px rgba(100, 60, 20, 0.08);
+}
+
+.theme-title {
+  margin-bottom: 14px;
+
+  color: #7b461c;
+  font-weight: 600;
+}
+
+.theme-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.theme-option {
+  padding: 10px 18px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.8);
+
+  color: #6d421d;
+
+  border: 1px solid rgba(139, 74, 22, 0.12);
+
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.theme-option:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 15px rgba(100, 60, 20, 0.1);
+}
+
+.theme-option:active {
+  transform: scale(0.96);
+}
+
+/* Dark mode appearance */
+
+body.dark-mode .theme-settings {
+  background: rgba(45, 36, 28, 0.9);
+  border-color: rgba(255, 220, 170, 0.12);
+}
+
+body.dark-mode .theme-title {
+  color: #f5d59a;
+}
+
+body.dark-mode .theme-option {
+  background: #30261d;
+  color: #f5d59a;
+  border-color: rgba(255, 220, 170, 0.15);
+}
