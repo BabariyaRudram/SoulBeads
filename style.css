@@ -1226,3 +1226,89 @@ body.dark-mode .complete-button {
     transform: scale(1);
   }
 }
+/* =========================
+   MALA PROGRESS
+========================= */
+
+.mala-progress {
+  width: min(900px, 100%);
+  margin: 20px auto;
+  padding: 18px;
+
+  text-align: center;
+}
+
+.mala-beads {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.mala-bead {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: rgba(139, 74, 22, 0.16);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mala-bead.bead-filled {
+  background: #8b5a2b;
+
+  transform: scale(1.15);
+
+  box-shadow:
+    0 2px 6px rgba(100, 60, 20, 0.2);
+}
+
+.mala-text {
+  margin-top: 12px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #7b461c;
+}
+
+
+/* Dark mode */
+
+body.dark-mode .mala-bead {
+  background: rgba(255, 220, 170, 0.14);
+}
+
+body.dark-mode .mala-bead.bead-filled {
+  background: #c58b45;
+}
+
+body.dark-mode .mala-text {
+  color: #f5d59a;
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .mala-progress {
+    padding: 12px;
+  }
+
+  .mala-beads {
+    gap: 5px;
+  }
+
+  .mala-bead {
+    width: 8px;
+    height: 8px;
+  }
+}
