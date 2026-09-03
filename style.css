@@ -1527,3 +1527,159 @@ body.dark-mode .history-open-btn {
   white-space: nowrap;
   text-align: right;
 }
+/* =========================
+   JAP STATISTICS
+========================= */
+
+.statistics-screen {
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255, 230, 190, 0.45),
+      transparent 45%
+    );
+}
+
+.statistics-content {
+  width: min(700px, 100%);
+  margin: 30px auto;
+  text-align: center;
+}
+
+.statistics-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.statistics-content h2 {
+  margin: 0;
+
+  color: #7b461c;
+  font-size: 28px;
+}
+
+.statistics-subtitle {
+  margin: 8px 0 25px;
+  color: #876b50;
+}
+
+.stats-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+.stat-card {
+  padding: 22px 15px;
+
+  background:
+    rgba(255, 255, 255, 0.78);
+
+  border:
+    1px solid rgba(139, 74, 22, 0.1);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 24px
+    rgba(100, 60, 20, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stat-card:active {
+  transform: scale(0.97);
+}
+
+.stat-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  color: #7b461c;
+
+  font-size: 25px;
+  font-weight: 700;
+
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: #876b50;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+/* Dark mode */
+
+body.dark-mode .statistics-screen {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(120, 85, 45, 0.28),
+      transparent 45%
+    ),
+    #17130f;
+}
+
+body.dark-mode .statistics-content h2 {
+  color: #f5d59a;
+}
+
+body.dark-mode .statistics-subtitle {
+  color: #cdbb9e;
+}
+
+body.dark-mode .stat-card {
+  background:
+    rgba(45, 36, 28, 0.92);
+
+  border-color:
+    rgba(255, 220, 170, 0.14);
+}
+
+body.dark-mode .stat-value {
+  color: #f5d59a;
+}
+
+body.dark-mode .stat-label {
+  color: #cdbb9e;
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .statistics-screen {
+    padding: 15px;
+  }
+
+  .stats-grid {
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 18px 10px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+}
