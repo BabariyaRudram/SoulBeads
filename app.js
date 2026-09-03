@@ -1404,3 +1404,237 @@ function updateStreak() {
       );
   }
 }
+/* =========================
+   DAILY REMINDER
+========================= */
+
+function openReminder() {
+
+  applySavedTheme();
+
+  const home =
+    document.querySelector(".app");
+
+  const reminderScreen =
+    document.getElementById("reminderScreen");
+
+  if (!home || !reminderScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  reminderScreen.style.display = "block";
+
+  loadReminderSettings();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeReminder() {
+
+  const home =
+    document.querySelector(".app");
+
+  const reminderScreen =
+    document.getElementById("reminderScreen");
+
+  if (!home || !reminderScreen) {
+    return;
+  }
+
+  reminderScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function loadReminderSettings() {
+
+  const toggle =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+  const timeInput =
+    document.getElementById(
+      "reminderTime"
+    );
+
+  const status =
+    document.getElementById(
+      "reminderStatus"
+    );
+
+  if (!toggle || !timeInput) {
+    return;
+  }
+
+  const savedEnabled =
+    localStorage.getItem(
+      "soulbeads_reminder_enabled"
+    ) === "true";
+
+  const savedTime =
+    localStorage.getItem(
+      "soulbeads_reminder_time"
+    ) || "07:00";
+
+  toggle.checked =
+    savedEnabled;
+
+  timeInput.value =
+    savedTime;
+
+  updateReminderStatus();
+}
+
+
+function saveReminderSettings() {
+
+  const toggle =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+  const timeInput =
+    document.getElementById(
+      "reminderTime"
+    );
+
+  if (!toggle || !timeInput) {
+    return;
+  }
+
+  localStorage.setItem(
+    "soulbeads_reminder_enabled",
+    toggle.checked
+  );
+
+  localStorage.setItem(
+    "soulbeads_reminder_time",
+    timeInput.value
+  );
+
+  updateReminderStatus();
+}
+
+
+function updateReminderStatus() {
+
+  const toggle =
+    document.getElementById(
+      "reminderToggle"
+    );
+
+  const timeInput =
+    document.getElementById(
+      "reminderTime"
+    );
+
+  const status =
+    document.getElementById(
+      "reminderStatus"
+    );
+
+  if (!toggle || !timeInput || !status) {
+    return;
+  }
+
+  if (!toggle.checked) {
+
+    status.textContent =
+      "Reminder is off.";
+
+    return;
+  }
+
+  const time =
+    timeInput.value;
+
+  if (!time) {
+
+    status.textContent =
+      "Please choose a reminder time.";
+
+    return;
+  }
+
+  status.textContent =
+    "Reminder set for " +
+    formatReminderTime(time) +
+    ". 🔔";
+}
+
+
+function formatReminderTime(time) {
+
+  const parts =
+    time.split(":");
+
+  let hour =
+    Number(parts[0]);
+
+  const minute =
+    parts[1];
+
+  const period =
+    hour >= 12 ? "PM" : "AM";
+
+  if (hour === 0) {
+    hour = 12;
+  } else if (hour > 12) {
+    hour -= 12;
+  }
+
+  return (
+    hour +
+    ":" +
+    minute +
+    " " +
+    period
+  );
+}
+
+
+/* Reminder controls */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    const toggle =
+      document.getElementById(
+        "reminderToggle"
+      );
+
+    const timeInput =
+      document.getElementById(
+        "reminderTime"
+      );
+
+    if (toggle) {
+
+      toggle.addEventListener(
+        "change",
+        saveReminderSettings
+      );
+    }
+
+    if (timeInput) {
+
+      timeInput.addEventListener(
+        "change",
+        saveReminderSettings
+      );
+    }
+
+  }
+);
