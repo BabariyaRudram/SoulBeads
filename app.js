@@ -974,3 +974,195 @@ function updateHistory() {
     }
   );
 }
+/* =========================
+   JAP STATISTICS
+========================= */
+
+function openStatistics() {
+
+  applySavedTheme();
+
+  const home =
+    document.querySelector(".app");
+
+  const statisticsScreen =
+    document.getElementById(
+      "statisticsScreen"
+    );
+
+  if (!home || !statisticsScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  statisticsScreen.style.display = "block";
+
+  updateStatistics();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeStatistics() {
+
+  const home =
+    document.querySelector(".app");
+
+  const statisticsScreen =
+    document.getElementById(
+      "statisticsScreen"
+    );
+
+  if (!home || !statisticsScreen) {
+    return;
+  }
+
+  statisticsScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function updateStatistics() {
+
+  let totalJap = 0;
+  let totalDays = 0;
+  let bestDay = 0;
+
+  const today = new Date();
+
+  for (let i = 0; i < 3650; i++) {
+
+    const date = new Date(today);
+
+    date.setDate(
+      today.getDate() - i
+    );
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0");
+
+    const day =
+      String(
+        date.getDate()
+      ).padStart(2, "0");
+
+    const dateKey =
+      year + "-" + month + "-" + day;
+
+    const saved =
+      localStorage.getItem(
+        "soulbeads_daily_" + dateKey
+      );
+
+    if (!saved) {
+      continue;
+    }
+
+    try {
+
+      const data =
+        JSON.parse(saved);
+
+      if (
+        typeof data !== "object" ||
+        data === null ||
+        Array.isArray(data)
+      ) {
+        continue;
+      }
+
+      let dayTotal = 0;
+
+      Object.values(data).forEach(
+        function(value) {
+
+          const number =
+            Number(value);
+
+          if (
+            Number.isFinite(number) &&
+            number > 0
+          ) {
+            dayTotal += number;
+          }
+        }
+      );
+
+      if (dayTotal > 0) {
+
+        totalJap += dayTotal;
+        totalDays++;
+
+        if (dayTotal > bestDay) {
+          bestDay = dayTotal;
+        }
+      }
+
+    } catch (error) {
+      continue;
+    }
+  }
+
+  const totalJapElement =
+    document.getElementById(
+      "totalJapStat"
+    );
+
+  const totalDaysElement =
+    document.getElementById(
+      "totalDaysStat"
+    );
+
+  const bestDayElement =
+    document.getElementById(
+      "bestDayStat"
+    );
+
+  const totalMalaElement =
+    document.getElementById(
+      "totalMalaStat"
+    );
+
+
+  if (totalJapElement) {
+
+    totalJapElement.textContent =
+      totalJap.toLocaleString("en-IN");
+  }
+
+
+  if (totalDaysElement) {
+
+    totalDaysElement.textContent =
+      totalDays.toLocaleString("en-IN");
+  }
+
+
+  if (bestDayElement) {
+
+    bestDayElement.textContent =
+      bestDay.toLocaleString("en-IN");
+  }
+
+
+  if (totalMalaElement) {
+
+    totalMalaElement.textContent =
+      Math.floor(
+        totalJap / 108
+      ).toLocaleString("en-IN");
+  }
+}
