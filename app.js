@@ -377,8 +377,52 @@ function updateCounter() {
 
     }
   }
+  updateMalaProgress();
 }
+function updateMalaProgress() {
 
+  const beads =
+    document.getElementById("malaBeads");
+
+  const text =
+    document.getElementById("malaText");
+
+  if (!beads) {
+    return;
+  }
+
+  const malaSize = 108;
+
+  const completed =
+    Math.min(
+      Math.floor((count / target) * malaSize),
+      malaSize
+    );
+
+  beads.innerHTML = "";
+
+  for (let i = 0; i < malaSize; i++) {
+
+    const bead =
+      document.createElement("span");
+
+    bead.className = "mala-bead";
+
+    if (i < completed) {
+      bead.classList.add("bead-filled");
+    }
+
+    beads.appendChild(bead);
+  }
+
+  if (text) {
+    text.textContent =
+      Math.min(count, target).toLocaleString("en-IN") +
+      " / " +
+      target.toLocaleString("en-IN") +
+      " Jap";
+  }
+}
 
 /* =========================
    RESET
