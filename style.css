@@ -882,3 +882,18 @@ body.dark-mode .theme-option {
   color: #f5d59a;
   border-color: rgba(255, 220, 170, 0.15);
 }
+/* Selected Theme */
+
+.theme-option.theme-selected {
+  background: #8b4a16;
+  color: white;
+  box-shadow:
+    0 6px 18px rgba(100, 60, 20, 0.18);
+
+  transform: translateY(-1px);
+}
+
+body.dark-mode .theme-option.theme-selected {
+  background: #c58b45;
+  color: #20160e;
+}
