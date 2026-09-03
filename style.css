@@ -1506,3 +1506,24 @@ body.dark-mode .history-open-btn {
     padding: 12px 16px;
   }
 }
+/* History chant spacing */
+
+.history-chant {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 8px 0;
+}
+
+.history-chant span {
+  flex: 1;
+  text-align: left;
+}
+
+.history-chant strong {
+  white-space: nowrap;
+  text-align: right;
+}
