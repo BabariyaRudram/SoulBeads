@@ -19,14 +19,7 @@
 </head>
 
 <body>
-
-  <button
-  id="themeToggle"
-  class="theme-toggle"
-  onclick="toggleTheme()"
->
-  🌙 Dark Mode
-  </button>
+  
 
   <!-- =========================
        HOME SCREEN
@@ -175,6 +168,40 @@
 >
   📅 Today's Jap Progress
 </button>
+    <!-- Theme Settings -->
+
+<div class="theme-settings">
+
+  <p class="theme-title">
+    🎨 Appearance
+  </p>
+
+  <div class="theme-options">
+
+    <button
+      class="theme-option"
+      onclick="setTheme('light')"
+    >
+      ☀️ Light
+    </button>
+
+    <button
+      class="theme-option"
+      onclick="setTheme('dark')"
+    >
+      🌙 Dark
+    </button>
+
+    <button
+      class="theme-option"
+      onclick="setTheme('system')"
+    >
+      📱 System
+    </button>
+
+  </div>
+
+</div>
     
   </main>
 <!-- =========================
