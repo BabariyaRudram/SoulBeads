@@ -800,7 +800,6 @@ function closeHistory() {
   });
 }
 
-
 function updateHistory() {
 
   const list =
@@ -863,18 +862,28 @@ function updateHistory() {
       }
 
       let total = 0;
+      const chants = [];
 
-      Object.values(data).forEach(
-        function(value) {
+      Object.entries(data).forEach(
+        function(entry) {
 
-          const number =
-            Number(value);
+          const chant =
+            entry[0];
+
+          const value =
+            Number(entry[1]);
 
           if (
-            Number.isFinite(number) &&
-            number > 0
+            Number.isFinite(value) &&
+            value > 0
           ) {
-            total += number;
+
+            total += value;
+
+            chants.push({
+              name: chant,
+              count: value
+            });
           }
         }
       );
@@ -883,7 +892,8 @@ function updateHistory() {
 
         history.push({
           date: dateKey,
-          total: total
+          total: total,
+          chants: chants
         });
       }
 
@@ -913,14 +923,52 @@ function updateHistory() {
       card.className =
         "history-item";
 
+      const dateObject =
+        new Date(item.date + "T00:00:00");
+
+      const formattedDate =
+        dateObject.toLocaleDateString(
+          "en-IN",
+          {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+          }
+        );
+
+      let chantHTML = "";
+
+      item.chants.forEach(
+        function(chant) {
+
+          chantHTML +=
+            "<div class='history-chant'>" +
+            "<span>" +
+            chant.name +
+            "</span>" +
+            "<strong>" +
+            chant.count.toLocaleString("en-IN") +
+            " Jap" +
+            "</strong>" +
+            "</div>";
+        }
+      );
+
       card.innerHTML =
-        "<strong>" +
-        item.date +
-        "</strong>" +
-        "<span>" +
+        "<div class='history-date'>" +
+        "📅 " +
+        formattedDate +
+        "</div>" +
+
+        "<div class='history-total'>" +
+        "🪷 " +
         item.total.toLocaleString("en-IN") +
-        " Jap" +
-        "</span>";
+        " Total Jap" +
+        "</div>" +
+
+        "<div class='history-chants'>" +
+        chantHTML +
+        "</div>";
 
       list.appendChild(card);
     }
