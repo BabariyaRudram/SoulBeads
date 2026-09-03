@@ -956,7 +956,7 @@ function updateHistory() {
 
       card.innerHTML =
         "<div class='history-date'>" +
-        "📅 " +
+        "🗓️" +
         formattedDate +
         "</div>" +
 
