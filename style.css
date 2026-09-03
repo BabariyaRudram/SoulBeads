@@ -1075,3 +1075,128 @@ body.dark-mode #dailyTotal,
 body.dark-mode .daily-item strong {
   color: #f5d59a;
 }
+/* =========================
+   JAP COMPLETE MODAL
+========================= */
+
+.complete-modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(35, 22, 12, 0.45);
+
+  backdrop-filter: blur(8px);
+
+  z-index: 9999;
+}
+
+.complete-box {
+  width: min(420px, 100%);
+
+  padding: 35px 25px;
+
+  text-align: center;
+
+  background: rgba(255, 248, 235, 0.96);
+
+  border: 1px solid rgba(139, 74, 22, 0.12);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(70, 40, 15, 0.2);
+
+  animation: completeAppear 0.35s ease;
+}
+
+.complete-icon {
+  font-size: 55px;
+
+  margin-bottom: 12px;
+}
+
+.complete-box h2 {
+  margin: 0 0 10px;
+
+  color: #7b461c;
+
+  font-size: 28px;
+}
+
+.complete-box p {
+  margin: 0 auto 25px;
+
+  color: #765b43;
+
+  line-height: 1.6;
+
+  max-width: 320px;
+}
+
+.complete-button {
+  padding: 12px 24px;
+
+  border: none;
+
+  border-radius: 22px;
+
+  background: #8b5a2b;
+
+  color: #fff8eb;
+
+  font-weight: 600;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.complete-button:active {
+  transform: scale(0.96);
+}
+
+@keyframes completeAppear {
+
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Dark mode */
+
+body.dark-mode .complete-box {
+  background: rgba(45, 36, 28, 0.97);
+
+  border-color:
+    rgba(255, 220, 170, 0.14);
+}
+
+body.dark-mode .complete-box h2 {
+  color: #f5d59a;
+}
+
+body.dark-mode .complete-box p {
+  color: #cdbb9e;
+}
+
+body.dark-mode .complete-button {
+  background: #a87335;
+  color: #fff4df;
+}
