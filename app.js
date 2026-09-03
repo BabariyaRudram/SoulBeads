@@ -534,24 +534,15 @@ function updateDailyProgress() {
 
 function setTheme(theme) {
 
-  if (theme === "dark") {
-    document.body.classList.add("dark-mode");
-
-  } else if (theme === "light") {
-    document.body.classList.remove("dark-mode");
-
-  } else if (theme === "system") {
-
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (prefersDark) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
+  if (
+    theme !== "light" &&
+    theme !== "dark" &&
+    theme !== "system"
+  ) {
+    theme = "system";
   }
+
+  applyTheme(theme);
 
   localStorage.setItem(
     "soulbeads_theme",
@@ -561,6 +552,37 @@ function setTheme(theme) {
   updateThemeButtons(theme);
 }
 
+
+/* Apply theme without changing saved preference */
+
+function applyTheme(theme) {
+
+  if (theme === "dark") {
+
+    document.body.classList.add("dark-mode");
+
+  } else if (theme === "light") {
+
+    document.body.classList.remove("dark-mode");
+
+  } else {
+
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+    document.body.classList.toggle(
+      "dark-mode",
+      prefersDark
+    );
+  }
+}
+
+
+/* Update selected button */
+
 function updateThemeButtons(theme) {
 
   const buttons =
@@ -568,24 +590,54 @@ function updateThemeButtons(theme) {
 
   buttons.forEach(function(button) {
 
-    button.classList.remove("theme-selected");
+    button.classList.remove(
+      "theme-selected"
+    );
 
-    if (
-      button.textContent
-        .toLowerCase()
-        .includes(theme)
-    ) {
-      button.classList.add("theme-selected");
+    const buttonTheme =
+      button.getAttribute("data-theme");
+
+    if (buttonTheme === theme) {
+
+      button.classList.add(
+        "theme-selected"
+      );
     }
   });
 }
+
+
+/* Load saved theme */
+
 function loadTheme() {
 
   const savedTheme =
-    localStorage.getItem("soulbeads_theme") || "system";
+    localStorage.getItem(
+      "soulbeads_theme"
+    ) || "system";
 
-  setTheme(savedTheme);
+  applyTheme(savedTheme);
+
+  updateThemeButtons(savedTheme);
 }
+
+
+/* Reapply saved theme when opening screens */
+
+function applySavedTheme() {
+
+  const savedTheme =
+    localStorage.getItem(
+      "soulbeads_theme"
+    ) || "system";
+
+  applyTheme(savedTheme);
+
+  updateThemeButtons(savedTheme);
+}
+
+
+/* Load theme when app starts */
 
 document.addEventListener(
   "DOMContentLoaded",
