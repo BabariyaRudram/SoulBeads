@@ -528,3 +528,46 @@ function updateDailyProgress() {
       '<p class="empty-daily">No Jap recorded today yet 🪷</p>';
   }
 }
+/* =========================
+   THEME SETTINGS
+========================= */
+
+function setTheme(theme) {
+
+  if (theme === "dark") {
+    document.body.classList.add("dark-mode");
+
+  } else if (theme === "light") {
+    document.body.classList.remove("dark-mode");
+
+  } else if (theme === "system") {
+
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    if (prefersDark) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }
+
+  localStorage.setItem(
+    "soulbeads_theme",
+    theme
+  );
+}
+
+function loadTheme() {
+
+  const savedTheme =
+    localStorage.getItem("soulbeads_theme") || "system";
+
+  setTheme(savedTheme);
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  loadTheme
+);
