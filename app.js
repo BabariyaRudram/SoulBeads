@@ -296,6 +296,16 @@ function doJap() {
   saveCount();
   saveDailyProgress();
   updateCounter();
+  const countElement =
+  document.getElementById("count");
+
+if (countElement) {
+  countElement.classList.remove("count-pop");
+
+  void countElement.offsetWidth;
+
+  countElement.classList.add("count-pop");
+}
 
   if ("vibrate" in navigator) {
     navigator.vibrate(15);
