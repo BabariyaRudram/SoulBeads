@@ -579,3 +579,15 @@ function updateThemeButtons(theme) {
     }
   });
 }
+function loadTheme() {
+
+  const savedTheme =
+    localStorage.getItem("soulbeads_theme") || "system";
+
+  setTheme(savedTheme);
+}
+
+document.addEventListener(
+  "DOMContentLoaded",
+  loadTheme
+);
