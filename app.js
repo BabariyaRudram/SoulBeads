@@ -1620,13 +1620,27 @@ document.addEventListener(
         "reminderTime"
       );
 
-    if (toggle) {
+  if (toggle) {
 
-      toggle.addEventListener(
-        "change",
-        saveReminderSettings
-      );
+  toggle.addEventListener(
+    "change",
+    async function () {
+
+      if (toggle.checked) {
+
+        const allowed =
+          await requestReminderPermission();
+
+        if (!allowed) {
+
+          toggle.checked = false;
+        }
+      }
+
+      saveReminderSettings();
     }
+  );
+  }
 
     if (timeInput) {
 
@@ -1638,3 +1652,36 @@ document.addEventListener(
 
   }
 );
+/* =========================
+   REMINDER NOTIFICATIONS
+========================= */
+
+async function requestReminderPermission() {
+
+  if (!("Notification" in window)) {
+
+    alert(
+      "Notifications are not supported by this browser."
+    );
+
+    return false;
+  }
+
+  if (Notification.permission === "granted") {
+    return true;
+  }
+
+  if (Notification.permission === "denied") {
+
+    alert(
+      "Notifications are blocked. Please allow notifications for SoulBeads in your browser settings."
+    );
+
+    return false;
+  }
+
+  const permission =
+    await Notification.requestPermission();
+
+  return permission === "granted";
+}
