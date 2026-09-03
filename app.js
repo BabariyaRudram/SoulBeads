@@ -1166,3 +1166,241 @@ function updateStatistics() {
       ).toLocaleString("en-IN");
   }
 }
+/* =========================
+   JAP STREAK
+========================= */
+
+function openStreak() {
+
+  applySavedTheme();
+
+  const home =
+    document.querySelector(".app");
+
+  const streakScreen =
+    document.getElementById("streakScreen");
+
+  if (!home || !streakScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  streakScreen.style.display = "block";
+
+  updateStreak();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeStreak() {
+
+  const home =
+    document.querySelector(".app");
+
+  const streakScreen =
+    document.getElementById("streakScreen");
+
+  if (!home || !streakScreen) {
+    return;
+  }
+
+  streakScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function getJapForDate(dateKey) {
+
+  const saved =
+    localStorage.getItem(
+      "soulbeads_daily_" + dateKey
+    );
+
+  if (!saved) {
+    return 0;
+  }
+
+  try {
+
+    const data =
+      JSON.parse(saved);
+
+    if (
+      typeof data !== "object" ||
+      data === null ||
+      Array.isArray(data)
+    ) {
+      return 0;
+    }
+
+    let total = 0;
+
+    Object.values(data).forEach(
+      function(value) {
+
+        const number =
+          Number(value);
+
+        if (
+          Number.isFinite(number) &&
+          number > 0
+        ) {
+          total += number;
+        }
+      }
+    );
+
+    return total;
+
+  } catch (error) {
+
+    return 0;
+  }
+}
+
+
+function getDateKey(date) {
+
+  const year =
+    date.getFullYear();
+
+  const month =
+    String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
+
+  const day =
+    String(
+      date.getDate()
+    ).padStart(2, "0");
+
+  return (
+    year +
+    "-" +
+    month +
+    "-" +
+    day
+  );
+}
+
+
+function updateStreak() {
+
+  const today =
+    new Date();
+
+  let currentStreak = 0;
+  let longestStreak = 0;
+  let runningStreak = 0;
+
+  /*
+    Calculate current streak.
+    Today counts only if Jap
+    has been completed today.
+  */
+
+  const todayKey =
+    getDateKey(today);
+
+  if (getJapForDate(todayKey) > 0) {
+
+    currentStreak = 1;
+
+    const checkDate =
+      new Date(today);
+
+    checkDate.setDate(
+      checkDate.getDate() - 1
+    );
+
+    while (
+      getJapForDate(
+        getDateKey(checkDate)
+      ) > 0
+    ) {
+
+      currentStreak++;
+
+      checkDate.setDate(
+        checkDate.getDate() - 1
+      );
+    }
+  }
+
+
+  /*
+    Find longest streak
+    across the last 3650 days.
+  */
+
+  for (let i = 3649; i >= 0; i--) {
+
+    const checkDate =
+      new Date(today);
+
+    checkDate.setDate(
+      today.getDate() - i
+    );
+
+    const dateKey =
+      getDateKey(checkDate);
+
+    if (
+      getJapForDate(dateKey) > 0
+    ) {
+
+      runningStreak++;
+
+      if (
+        runningStreak >
+        longestStreak
+      ) {
+
+        longestStreak =
+          runningStreak;
+      }
+
+    } else {
+
+      runningStreak = 0;
+    }
+  }
+
+
+  const currentElement =
+    document.getElementById(
+      "currentStreak"
+    );
+
+  const longestElement =
+    document.getElementById(
+      "longestStreak"
+    );
+
+
+  if (currentElement) {
+
+    currentElement.textContent =
+      currentStreak.toLocaleString(
+        "en-IN"
+      );
+  }
+
+
+  if (longestElement) {
+
+    longestElement.textContent =
+      longestStreak.toLocaleString(
+        "en-IN"
+      );
+  }
+}
