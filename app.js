@@ -413,7 +413,19 @@ function confirmReset() {
 
   closeResetModal();
 }
+/* =========================
+   JAP COMPLETE
+========================= */
 
+function closeCompleteModal() {
+
+  const modal =
+    document.getElementById("completeModal");
+
+  if (modal) {
+    modal.style.display = "none";
+  }
+}
 
 /* =========================
    STARTUP
