@@ -557,17 +557,25 @@ function setTheme(theme) {
     "soulbeads_theme",
     theme
   );
+
+  updateThemeButtons(theme);
 }
 
-function loadTheme() {
+function updateThemeButtons(theme) {
 
-  const savedTheme =
-    localStorage.getItem("soulbeads_theme") || "system";
+  const buttons =
+    document.querySelectorAll(".theme-option");
 
-  setTheme(savedTheme);
+  buttons.forEach(function(button) {
+
+    button.classList.remove("theme-selected");
+
+    if (
+      button.textContent
+        .toLowerCase()
+        .includes(theme)
+    ) {
+      button.classList.add("theme-selected");
+    }
+  });
 }
-
-document.addEventListener(
-  "DOMContentLoaded",
-  loadTheme
-);
