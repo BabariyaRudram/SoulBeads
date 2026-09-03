@@ -1,0 +1,10 @@
+{
+  "name": "SoulBeads",
+  "short_name": "SoulBeads",
+  "description": "A peaceful Naam Jap and spiritual practice app.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#8b5a2b",
+  "orientation": "portrait"
+}
