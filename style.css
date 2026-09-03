@@ -897,3 +897,80 @@ body.dark-mode .theme-option.theme-selected {
   background: #c58b45;
   color: #20160e;
 }
+/* =========================
+   DARK MODE — ALL SCREENS
+========================= */
+
+body.dark-mode .jap-screen,
+body.dark-mode .daily-screen {
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(120, 85, 45, 0.28),
+      transparent 45%
+    ),
+    #17130f;
+}
+
+body.dark-mode .back-btn {
+  background: rgba(48, 38, 29, 0.9);
+  color: #f5d59a;
+}
+
+body.dark-mode .jap-image {
+  background: rgba(45, 36, 28, 0.9);
+}
+
+body.dark-mode .counter-circle {
+  background: rgba(45, 36, 28, 0.9);
+  color: #f5e9d2;
+  border-color: rgba(255, 220, 170, 0.18);
+}
+
+body.dark-mode .counter-circle small {
+  color: #cdbb9e;
+}
+
+body.dark-mode .progress-area {
+  color: #f5e9d2;
+}
+
+body.dark-mode .jap-button {
+  background: #8b5a2b;
+  color: #fff4df;
+}
+
+body.dark-mode .reset-button {
+  background: rgba(48, 38, 29, 0.9);
+  color: #f5d59a;
+}
+
+body.dark-mode .daily-content h2 {
+  color: #f5d59a;
+}
+
+body.dark-mode .daily-date {
+  color: #cdbb9e;
+}
+
+body.dark-mode .daily-total {
+  background: rgba(45, 36, 28, 0.9);
+  border-color: rgba(255, 220, 170, 0.18);
+}
+
+body.dark-mode #dailyTotal {
+  color: #f5d59a;
+}
+
+body.dark-mode .daily-total small {
+  color: #cdbb9e;
+}
+
+body.dark-mode .daily-item {
+  background: rgba(45, 36, 28, 0.9);
+  color: #f5e9d2;
+}
+
+body.dark-mode .daily-item strong {
+  color: #f5d59a;
+}
