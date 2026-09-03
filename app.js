@@ -685,3 +685,23 @@ document.addEventListener(
   "DOMContentLoaded",
   loadTheme
 );
+document.addEventListener("DOMContentLoaded", function () {
+
+  const button =
+    document.getElementById("completeContinueButton");
+
+  if (button) {
+
+    button.addEventListener("click", function () {
+
+      const modal =
+        document.getElementById("completeModal");
+
+      if (modal) {
+        modal.style.display = "none";
+      }
+
+    });
+  }
+
+});
