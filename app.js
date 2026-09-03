@@ -749,3 +749,180 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 });
+/* =========================
+   JAP HISTORY
+========================= */
+
+function openHistory() {
+
+  applySavedTheme();
+
+  const home =
+    document.querySelector(".app");
+
+  const historyScreen =
+    document.getElementById("historyScreen");
+
+  if (!home || !historyScreen) {
+    return;
+  }
+
+  home.style.display = "none";
+  historyScreen.style.display = "block";
+
+  updateHistory();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function closeHistory() {
+
+  const home =
+    document.querySelector(".app");
+
+  const historyScreen =
+    document.getElementById("historyScreen");
+
+  if (!home || !historyScreen) {
+    return;
+  }
+
+  historyScreen.style.display = "none";
+  home.style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function updateHistory() {
+
+  const list =
+    document.getElementById("historyList");
+
+  if (!list) {
+    return;
+  }
+
+  list.innerHTML = "";
+
+  const history = [];
+
+  const today = new Date();
+
+  for (let i = 0; i < 30; i++) {
+
+    const date = new Date(today);
+
+    date.setDate(
+      today.getDate() - i
+    );
+
+    const year =
+      date.getFullYear();
+
+    const month =
+      String(
+        date.getMonth() + 1
+      ).padStart(2, "0");
+
+    const day =
+      String(
+        date.getDate()
+      ).padStart(2, "0");
+
+    const dateKey =
+      year + "-" + month + "-" + day;
+
+    const saved =
+      localStorage.getItem(
+        "soulbeads_daily_" + dateKey
+      );
+
+    if (!saved) {
+      continue;
+    }
+
+    try {
+
+      const data =
+        JSON.parse(saved);
+
+      if (
+        typeof data !== "object" ||
+        data === null ||
+        Array.isArray(data)
+      ) {
+        continue;
+      }
+
+      let total = 0;
+
+      Object.values(data).forEach(
+        function(value) {
+
+          const number =
+            Number(value);
+
+          if (
+            Number.isFinite(number) &&
+            number > 0
+          ) {
+            total += number;
+          }
+        }
+      );
+
+      if (total > 0) {
+
+        history.push({
+          date: dateKey,
+          total: total
+        });
+      }
+
+    } catch (error) {
+      continue;
+    }
+  }
+
+
+  if (history.length === 0) {
+
+    list.innerHTML =
+      "<p class='history-empty'>" +
+      "No Jap history yet. 🪷" +
+      "</p>";
+
+    return;
+  }
+
+
+  history.forEach(
+    function(item) {
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "history-item";
+
+      card.innerHTML =
+        "<strong>" +
+        item.date +
+        "</strong>" +
+        "<span>" +
+        item.total.toLocaleString("en-IN") +
+        " Jap" +
+        "</span>";
+
+      list.appendChild(card);
+    }
+  );
+}
