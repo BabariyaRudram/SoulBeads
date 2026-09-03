@@ -225,7 +225,7 @@ function saveDailyProgress() {
 ========================= */
 
 function openJap(name, icon = "📿") {
-
+applySavedTheme();
   currentChant = String(name);
   loadTarget();
 
