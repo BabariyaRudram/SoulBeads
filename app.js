@@ -418,7 +418,7 @@ document.addEventListener(
 ========================= */
 
 function openDailyProgress() {
-
+applySavedTheme();
   const home = document.querySelector(".app");
   const dailyScreen = document.getElementById("dailyScreen");
 
