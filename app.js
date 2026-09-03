@@ -285,7 +285,6 @@ function goHome() {
 /* =========================
    ADD ONE JAP
 ========================= */
-
 function doJap() {
 
   if (count >= Number.MAX_SAFE_INTEGER) {
@@ -300,6 +299,27 @@ function doJap() {
 
   if ("vibrate" in navigator) {
     navigator.vibrate(15);
+  }
+
+  /* Check target completion */
+
+  if (count >= target) {
+
+    const message =
+      document.getElementById("completeMessage");
+
+    if (message) {
+      message.textContent =
+        "Your " + currentChant +
+        " Jap target is complete. 🙏";
+    }
+
+    const modal =
+      document.getElementById("completeModal");
+
+    if (modal) {
+      modal.style.display = "flex";
+    }
   }
 }
 
