@@ -1628,13 +1628,19 @@ document.addEventListener(
 
       if (toggle.checked) {
 
-        const allowed =
-          await requestReminderPermission();
+  const allowed =
+    await requestReminderPermission();
 
-        if (!allowed) {
+  if (!allowed) {
 
-          toggle.checked = false;
-        }
+    toggle.checked = false;
+
+  } else if (
+    window.setupPushNotifications
+  ) {
+
+    await window.setupPushNotifications();
+  }
       }
 
       saveReminderSettings();
