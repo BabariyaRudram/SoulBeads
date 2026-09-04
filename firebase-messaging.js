@@ -43,10 +43,10 @@ async function setupPushNotifications() {
       await navigator.serviceWorker.ready;
 
     const token =
-      await getToken(messaging, {
-        vapidKey: "BAXqh3ETrRMBA6ghY_ghjiX-RK0wO--yosbGemPuJEwGfQNl8Z2qd5fpiBnEFoX-2z-BIUmU3hXAr4UTmkmMh3M
-        serviceWorkerRegistration: registration",
-      });
+  await getToken(messaging, {
+    vapidKey: "BAXqh3ETrRMBA6ghY_ghjiX-RK0wO--yosbGemPuJEwGfQNl8Z2qd5fpiBnEFoX-2z-BIUmU3hXAr4UTmkmMh3M",
+    serviceWorkerRegistration: registration
+  });
 
     if (token) {
 
