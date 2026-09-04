@@ -1,4 +1,4 @@
-const CACHE_NAME = "soulbeads-v2";
+const CACHE_NAME = "soulbeads-v3";
 
 const APP_FILES = [
   "./",
