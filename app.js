@@ -1685,3 +1685,35 @@ async function requestReminderPermission() {
 
   return permission === "granted";
 }
+/* =========================
+   SERVICE WORKER
+========================= */
+
+if ("serviceWorker" in navigator) {
+
+  window.addEventListener(
+    "load",
+    function () {
+
+      navigator.serviceWorker
+        .register("./sw.js")
+        .then(function () {
+
+          console.log(
+            "SoulBeads service worker registered."
+          );
+
+        })
+        .catch(function (error) {
+
+          console.error(
+            "Service worker registration failed:",
+            error
+          );
+
+        });
+
+    }
+  );
+
+}
