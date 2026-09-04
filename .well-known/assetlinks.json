@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "io.github.babariyarudram.twa",
+      "sha256_cert_fingerprints": [
+        "02:6E:95:98:51:AA:40:69:86:FA:95:51:41:E9:71:4B:2B:37:42:B3:25:39:B0:67:4E:FF:7D:98:C2:C3:2B:E9"
+      ]
+    }
+  }
+]
