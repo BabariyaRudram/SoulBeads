@@ -30,7 +30,7 @@ const messaging =
 async function setupPushNotifications() {
 
   try {
-    console.log("🔥 setupPushNotifications CALLED");
+    alert("🔥 Firebase setup started");
 
     const permission =
       await Notification.requestPermission();
