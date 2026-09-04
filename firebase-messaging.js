@@ -50,14 +50,22 @@ async function setupPushNotifications() {
 
     if (token) {
 
-      console.log(
-        "SoulBeads push registration successful."
-      );
+  console.log(
+    "SoulBeads push registration successful."
+  );
 
-      localStorage.setItem(
-        "soulbeads_fcm_token",
-        token
-      );
+  localStorage.setItem(
+    "soulbeads_fcm_token",
+    token
+  );
+
+  const status =
+    document.getElementById("reminderStatus");
+
+  if (status) {
+    status.textContent =
+      "Push notifications connected. 🔔🪷";
+  }
 
     }
 
