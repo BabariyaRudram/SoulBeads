@@ -56,3 +56,36 @@ self.addEventListener("fetch", function (event) {
   );
 
 });
+/* =========================
+   PUSH NOTIFICATIONS
+========================= */
+
+self.addEventListener("push", function (event) {
+
+  let data = {
+    title: "SoulBeads 🔔",
+    body: "It's time for your daily Jap. 🪷"
+  };
+
+  if (event.data) {
+    try {
+      data = event.data.json();
+    } catch (error) {
+      // Keep the default message
+    }
+  }
+
+  event.waitUntil(
+    self.registration.showNotification(
+      data.title,
+      {
+        body: data.body,
+        icon: "./icon-192.png",
+        badge: "./icon-192.png",
+        tag: "soulbeads-daily-reminder",
+        renotify: true
+      }
+    )
+  );
+
+});
