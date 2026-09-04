@@ -71,14 +71,22 @@ async function setupPushNotifications() {
 
   } catch (error) {
 
-    console.error(
-      "Push notification setup failed:",
-      error
-    );
+  console.error(
+    "Push notification setup failed:",
+    error
+  );
 
+  const status =
+    document.getElementById("reminderStatus");
+
+  if (status) {
+    status.textContent =
+      "Push notification setup failed. Please try again. 🔔";
   }
 
 }
+
+
 
 
 /* Make available to SoulBeads */
