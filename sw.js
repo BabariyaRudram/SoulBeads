@@ -80,8 +80,8 @@ self.addEventListener("push", function (event) {
       data.title,
       {
         body: data.body,
-        icon: "./icon-192.png",
-        badge: "./icon-192.png",
+        icon: "./",
+badge: "./",
         tag: "soulbeads-daily-reminder",
         renotify: true
       }
