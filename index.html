@@ -191,14 +191,6 @@
 >
   🔥 Jap Streak
 </button>
-   <!-- Daily Reminder -->
-
-<button
-  class="reminder-open-btn"
-  onclick="openReminder()"
->
-  🔔 Daily Reminder
-</button> 
     <!-- Theme Settings -->
 
 <div class="theme-settings">
@@ -486,84 +478,7 @@
   </div>
 
 </section>
-  <!-- Daily Reminder -->
-
-<section
-  id="reminderScreen"
-  class="reminder-screen"
-  style="display: none;"
->
-
-  <button
-    class="back-btn"
-    onclick="closeReminder()"
-  >
-    ← Back
-  </button>
-
-  <div class="reminder-content">
-
-    <div class="reminder-icon">
-      🔔
-    </div>
-
-    <h2>Daily Reminder</h2>
-
-    <p class="reminder-subtitle">
-      Keep your daily Jap practice connected
-    </p>
-
-    <div class="reminder-card">
-
-      <div class="reminder-row">
-
-        <div>
-          <strong>Daily Reminder</strong>
-
-          <p>
-            Get a gentle reminder for your Jap.
-          </p>
-        </div>
-
-        <label class="switch">
-          <input
-            type="checkbox"
-            id="reminderToggle"
-          >
-          <span class="slider"></span>
-        </label>
-
-      </div>
-
-      <div
-        id="reminderTimeArea"
-        class="reminder-time-area"
-      >
-
-        <label for="reminderTime">
-          Reminder Time
-        </label>
-
-        <input
-          type="time"
-          id="reminderTime"
-          value="07:00"
-        >
-
-      </div>
-
-    </div>
-
-    <p
-      id="reminderStatus"
-      class="reminder-status"
-    >
-      Reminder is off.
-    </p>
-
-  </div>
-
-</section>
+  
   
   <!-- =========================
        JAP SCREEN
