@@ -30,6 +30,7 @@ const messaging =
 async function setupPushNotifications() {
 
   try {
+    console.log("🔥 setupPushNotifications CALLED");
 
     const permission =
       await Notification.requestPermission();
