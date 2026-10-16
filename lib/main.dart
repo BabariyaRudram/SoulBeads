@@ -5,21 +5,57 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class M {
-  final String name, icon, text;
-  const M(this.name, this.icon, [this.text = '']);
+  final String name, icon, text, img;
+  const M(this.name, this.icon, {this.text = '', this.img = ''});
 }
 
-const mantras = <M>[
-  M('Radhe Radhe', '💐'),
-  M('Radhe Krishna', '🦚'),
-  M('Hare Krishna Maha-Mantra', '🪷'),
-  M('Jay Khodiyar Maa', '🫀'),
-  M('Jay Dasha Maa', '♥️'),
-  M('साम्ब सदाशिव', '🔱'),
-  M('Krishna Mantra', '🦚', 'ॐ कृष्णाय वासुदेवाय हरये परमात्मने।\nप्रणतः क्लेशनाशाय गोविंदाय नमो नमः॥'),
-  M('Gayatri Mantra', '🪕', 'ॐ भूर्भुवः स्वः ।\nतत्सवितुर्वरेण्यं ।\nभर्गो देवस्य धीमहि ।\nधियो यो नः प्रचोदयात् ॥'),
-  M('Maha Mrityunjay Mantra', '📿', 'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् ।\nउर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात् ॥'),
+const names = <M>[
+  M('राधा राधा', '💐', img: 'radha2'),
+  M('कृष्ण कृष्ण', '🦚', img: 'radha_krishna'),
+  M('राम राम', '🏹'),
+  M('हनुमान', '🚩'),
+  M('महादेव', '🔱', img: 'shiv'),
+  M('साम्ब सदाशिव', '🔱', img: 'shiv'),
+  M('सीताराम', '🏹'),
+  M('हर हर महादेव', '🔱', img: 'shiv'),
+  M('हरे कृष्ण', '🪷', img: 'radha_krishna'),
+  M('हरे राम', '🏹'),
+  M('हरि', '🪷', img: 'vishnu'),
+  M('नारायण', '🪷', img: 'vishnu'),
+  M('परशुराम', '🪓'),
+  M('शंकर', '🔱', img: 'shiv'),
+  M('माँ सरस्वती', '🪕'),
+  M('माँ भगवती', '🪔'),
+  M('माँ खोडियार', '🪔', img: 'khodiyar_maa'),
+  M('माँ दशा', '🪔', img: 'dasha_maa'),
+  M('माँ आद्याशक्ति', '🪔'),
+  M('माँ जगदम्बा', '🪔'),
+  M('माँ दुर्गा', '🪔'),
+  M('माँ कालका', '🪔'),
 ];
+
+final mantras = <M>[
+  M('ॐ गं गणपतये नमः', '🐘'),
+  M('ॐ नमः शिवाय', '🔱'),
+  M('श्री राम जय राम जय जय राम', '🏹'),
+  M('ॐ नमो नारायणाय', '🪷'),
+  M('हरे कृष्ण महामंत्र', '🪷', text: 'हरे कृष्ण हरे कृष्ण, कृष्ण कृष्ण हरे हरे।\nहरे राम हरे राम, राम राम हरे हरे॥'),
+  M('कृष्ण मंत्र', '🦚', img: 'krishna_cow', text: 'ॐ कृष्णाय वासुदेवाय हरये परमात्मने।\nप्रणतः क्लेशनाशाय गोविंदाय नमो नमः॥'),
+  M('महामृत्युंजय मंत्र', '🔱', img: 'mahamrityunjay', text: 'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात्॥'),
+  M('गायत्री मंत्र', '🪕', text: 'ॐ भूर्भुवः स्वः।\nतत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि।\nधियो यो नः प्रचोदयात्॥'),
+  M('नृसिंह मंत्र', '🦁', text: 'ॐ उग्रं वीरं महाविष्णुं ज्वलन्तं सर्वतोमुखम्।\nनृसिंहं भीषणं भद्रं मृत्युमृत्युं नमाम्यहम्॥'),
+  M('ॐ नमो भगवते वासुदेवाय', '🪷'),
+  M('सरस्वती मंत्र', '🪕', img: 'saraswati', text: 'ॐ ऐं सरस्वत्यै नमः'),
+] + moreMantras;
+
+final moreMantras = [
+  'हनुमते', 'दुर्गायै', 'श्रीं महालक्ष्म्यै', 'क्लीं कृष्णाय', 'राधायै', 'राधा कृष्णाय', 'गोविंदाय', 'गोपालाय',
+  'माधवाय', 'केशवाय', 'विष्णवे', 'श्रीधराय', 'दामोदराय', 'वामनाय', 'नरसिंहाय', 'त्रिविक्रमाय', 'रुद्राय',
+  'महादेवाय', 'शंकराय', 'भोलेनाथाय', 'सदाशिवाय', 'गंगाधराय', 'नीलकंठाय', 'कार्तिकेयाय', 'स्कन्दाय',
+  'सूर्याय', 'आदित्याय', 'शनैश्चराय', 'भैरवाय', 'दत्तात्रेयाय', 'परशुरामाय', 'वेंकटेशाय', 'जगन्नाथाय',
+  'अच्युताय', 'अनंताय', 'पुरुषोत्तमाय', 'नारायणाय', 'लक्ष्मी नारायणाय', 'सीतारामाय',
+].map((x) => M('ॐ $x नमः', '📿')).toList() + const [M('राधे राधे', '💐'), M('जय श्री राम', '🏹')];
+
 const presets = [11, 21, 51, 108, 501, 1008];
 
 String dkey(DateTime d) =>
@@ -200,6 +236,55 @@ class _ShellState extends State<Shell> {
   }
 }
 
+Widget tile(BuildContext context, M m, {bool del = false}) {
+  final has = m.img.isNotEmpty;
+  return Card(
+    clipBehavior: Clip.antiAlias,
+    child: InkWell(
+      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => JapPage(m: m))),
+      onLongPress: del
+          ? () async {
+              if (await ask(context, 'Delete "${m.name}"? Your jap history stays.')) {
+                store.custom.remove(m.name);
+                store.save();
+              }
+            }
+          : null,
+      child: Stack(fit: StackFit.expand, children: [
+        if (has) Image.asset('assets/images/${m.img}.jpg', fit: BoxFit.cover, errorBuilder: (_, __, ___) => const SizedBox()),
+        if (has)
+          const DecoratedBox(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(begin: Alignment.center, end: Alignment.bottomCenter, colors: [Colors.transparent, Colors.black87]),
+            ),
+          ),
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(mainAxisAlignment: has ? MainAxisAlignment.end : MainAxisAlignment.center, children: [
+            if (!has) Text(m.icon, style: const TextStyle(fontSize: 34)),
+            if (!has) const SizedBox(height: 6),
+            Text(m.name,
+                textAlign: TextAlign.center,
+                maxLines: 4,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14, color: has ? Colors.white : null)),
+          ]),
+        ),
+      ]),
+    ),
+  );
+}
+
+Widget grid(BuildContext context, List<M> l, {bool del = false}) => GridView.count(
+      crossAxisCount: 2,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      mainAxisSpacing: 12,
+      crossAxisSpacing: 12,
+      childAspectRatio: 0.85,
+      children: [for (final m in l) tile(context, m, del: del)],
+    );
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
@@ -207,8 +292,8 @@ class HomePage extends StatelessWidget {
     return ListenableBuilder(
       listenable: store,
       builder: (context, _) {
-        final all = [...mantras, ...store.custom.map((n) => M(n, '🕉️'))];
         final today = store.total(dkey(DateTime.now()));
+        final head = Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold);
         return ListView(padding: const EdgeInsets.all(16), children: [
           Text('SoulBeads 📿',
               textAlign: TextAlign.center,
@@ -223,40 +308,20 @@ class HomePage extends StatelessWidget {
                   textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.w600)),
             ),
           ),
+          const SizedBox(height: 12),
+          Text('नाम जप', style: head),
           const SizedBox(height: 8),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 12,
-            crossAxisSpacing: 12,
-            childAspectRatio: 1.1,
-            children: [
-              for (final m in all)
-                Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: InkWell(
-                    onTap: () => Navigator.push(context, MaterialPageRoute(builder: (_) => JapPage(m: m))),
-                    onLongPress: store.custom.contains(m.name)
-                        ? () async {
-                            if (await ask(context, 'Delete "${m.name}"? Your jap history stays.')) {
-                              store.custom.remove(m.name);
-                              store.save();
-                            }
-                          }
-                        : null,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Text(m.icon, style: const TextStyle(fontSize: 34)),
-                        const SizedBox(height: 6),
-                        Text(m.name, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.w600)),
-                      ]),
-                    ),
-                  ),
-                ),
-            ],
-          ),
+          grid(context, names),
+          const SizedBox(height: 18),
+          Text('मंत्र जप', style: head),
+          const SizedBox(height: 8),
+          grid(context, mantras),
+          if (store.custom.isNotEmpty) ...[
+            const SizedBox(height: 18),
+            Text('मेरे नाम', style: head),
+            const SizedBox(height: 8),
+            grid(context, [for (final n in store.custom) M(n, '🕉️')], del: true),
+          ],
           const SizedBox(height: 14),
           OutlinedButton.icon(
             onPressed: () async {
@@ -275,17 +340,31 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class JapPage extends StatelessWidget {
+class JapPage extends StatefulWidget {
   final M m;
   const JapPage({super.key, required this.m});
+  @override
+  State<JapPage> createState() => _JapPageState();
+}
 
-  void _tap(BuildContext context) {
+class _JapPageState extends State<JapPage> with SingleTickerProviderStateMixin {
+  late final AnimationController rain = AnimationController(vsync: this, duration: const Duration(seconds: 4));
+  M get m => widget.m;
+
+  @override
+  void dispose() {
+    rain.dispose();
+    super.dispose();
+  }
+
+  void _tap() {
     final n = store.tap(m.name);
     if (store.vib) HapticFeedback.lightImpact();
     if (store.snd) SystemSound.play(SystemSoundType.click);
     if (n == store.targetOf(m.name)) {
       HapticFeedback.heavyImpact();
       store.finish(m.name);
+      rain.forward(from: 0);
       showDialog(
         context: context,
         builder: (d) => AlertDialog(
@@ -294,6 +373,9 @@ class JapPage extends StatelessWidget {
           actions: [TextButton(onPressed: () => Navigator.pop(d), child: const Text('🙏 Continue'))],
         ),
       );
+    } else if (n % 108 == 0) {
+      HapticFeedback.mediumImpact();
+      rain.forward(from: 0);
     }
   }
 
@@ -306,81 +388,133 @@ class JapPage extends StatelessWidget {
         final inMala = n % 108;
         final filled = (n > 0 && inMala == 0) ? 108 : inMala;
         final cs = Theme.of(context).colorScheme;
+        final size = MediaQuery.of(context).size;
         return Scaffold(
-          appBar: AppBar(title: Text('${m.icon} ${m.name}'), actions: [
-            IconButton(
-              icon: const Icon(Icons.refresh),
-              tooltip: 'Reset count',
-              onPressed: () async {
-                if (await ask(context, 'Reset your current count to 0?')) store.finish(m.name);
-              },
+          backgroundColor: const Color(0xFF2A1A0E),
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            foregroundColor: Colors.white,
+            title: Text(m.name, style: const TextStyle(fontSize: 18)),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.refresh),
+                tooltip: 'Reset count',
+                onPressed: () async {
+                  if (await ask(context, 'Reset your current count to 0?')) store.finish(m.name);
+                },
+              ),
+            ],
+          ),
+          body: Stack(fit: StackFit.expand, children: [
+            if (m.img.isNotEmpty)
+              Image.asset('assets/images/${m.img}.jpg', fit: BoxFit.cover, errorBuilder: (_, __, ___) => const SizedBox())
+            else
+              Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Color(0xFF8B4A16), Color(0xFF2A1A0E)]),
+                ),
+                alignment: Alignment.center,
+                child: const Opacity(opacity: 0.12, child: Text('🪷', style: TextStyle(fontSize: 260))),
+              ),
+            Container(color: const Color(0x66000000)),
+            SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(16, 56, 16, 16),
+                child: DefaultTextStyle(
+                  style: const TextStyle(color: Colors.white),
+                  child: Column(children: [
+                    if (m.text.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Text(m.text, textAlign: TextAlign.center, style: const TextStyle(height: 1.6, fontSize: 16)),
+                      ),
+                    Wrap(spacing: 8, alignment: WrapAlignment.center, children: [
+                      for (final v in presets)
+                        ChoiceChip(
+                          label: Text('$v'),
+                          selected: tg == v,
+                          selectedColor: cs.primary,
+                          backgroundColor: const Color(0x66000000),
+                          labelStyle: const TextStyle(color: Colors.white),
+                          side: BorderSide.none,
+                          showCheckmark: false,
+                          onSelected: (_) {
+                            store.target[m.name] = v;
+                            store.save();
+                          },
+                        ),
+                      ActionChip(
+                        label: Text(presets.contains(tg) ? 'Custom' : 'Custom: $tg'),
+                        backgroundColor: const Color(0x66000000),
+                        labelStyle: const TextStyle(color: Colors.white),
+                        side: BorderSide.none,
+                        onPressed: () async {
+                          final t = await askText(context, 'Custom target', number: true);
+                          final v = int.tryParse(t ?? '');
+                          if (v != null && v > 0 && v <= 1000000) {
+                            store.target[m.name] = v;
+                            store.save();
+                          }
+                        },
+                      ),
+                    ]),
+                    const SizedBox(height: 14),
+                    SizedBox(
+                      width: 300,
+                      height: 300,
+                      child: CustomPaint(
+                        painter: MalaPainter(filled),
+                        child: Center(
+                          child: Column(mainAxisSize: MainAxisSize.min, children: [
+                            const SizedBox(height: 24),
+                            Text('$n',
+                                style: const TextStyle(
+                                    fontSize: 56, fontWeight: FontWeight.bold, color: Colors.white, shadows: [Shadow(blurRadius: 8, color: Colors.black54)])),
+                            Text('of $tg  •  ${n ~/ 108} mala${n ~/ 108 == 1 ? '' : 's'}'),
+                          ]),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    GestureDetector(
+                      onTap: _tap,
+                      child: Container(
+                        width: 120,
+                        height: 120,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: cs.primary,
+                          boxShadow: const [BoxShadow(blurRadius: 16, color: Colors.black54)],
+                        ),
+                        child: const Text('📿', style: TextStyle(fontSize: 48)),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    const Text('Tap to chant'),
+                  ]),
+                ),
+              ),
+            ),
+            IgnorePointer(
+              child: AnimatedBuilder(
+                animation: rain,
+                builder: (_, __) {
+                  if (!rain.isAnimating) return const SizedBox.shrink();
+                  return Stack(children: [
+                    for (var i = 0; i < 16; i++)
+                      Positioned(
+                        left: (i * 67 % 330) / 330 * (size.width - 30),
+                        top: -40 + (size.height + 80) * math.pow(((rain.value * 1.4) - i * 0.03).clamp(0.0, 1.0), 2).toDouble(),
+                        child: Text('🪷', style: TextStyle(fontSize: 24.0 + (i % 3) * 8)),
+                      ),
+                  ]);
+                },
+              ),
             ),
           ]),
-          body: SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(children: [
-                if (m.text.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 8),
-                    child: Text(m.text, textAlign: TextAlign.center, style: const TextStyle(height: 1.6)),
-                  ),
-                Wrap(spacing: 8, alignment: WrapAlignment.center, children: [
-                  for (final v in presets)
-                    ChoiceChip(
-                      label: Text('$v'),
-                      selected: tg == v,
-                      onSelected: (_) {
-                        store.target[m.name] = v;
-                        store.save();
-                      },
-                    ),
-                  ActionChip(
-                    label: Text(presets.contains(tg) ? 'Custom' : 'Custom: $tg'),
-                    onPressed: () async {
-                      final t = await askText(context, 'Custom target', number: true);
-                      final v = int.tryParse(t ?? '');
-                      if (v != null && v > 0 && v <= 1000000) {
-                        store.target[m.name] = v;
-                        store.save();
-                      }
-                    },
-                  ),
-                ]),
-                const SizedBox(height: 16),
-                SizedBox(
-                  width: 300,
-                  height: 300,
-                  child: CustomPaint(
-                    painter: MalaPainter(filled, cs.primary, cs.outlineVariant),
-                    child: Center(
-                      child: Column(mainAxisSize: MainAxisSize.min, children: [
-                        Text('$n', style: const TextStyle(fontSize: 56, fontWeight: FontWeight.bold)),
-                        Text('of $tg  •  ${n ~/ 108} mala${n ~/ 108 == 1 ? '' : 's'}'),
-                      ]),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 12),
-                GestureDetector(
-                  onTap: () => _tap(context),
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: cs.primary,
-                      boxShadow: const [BoxShadow(blurRadius: 14, color: Colors.black26)],
-                    ),
-                    child: const Text('📿', style: TextStyle(fontSize: 48)),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                const Text('Tap to chant'),
-              ]),
-            ),
-          ),
         );
       },
     );
@@ -389,151 +523,12 @@ class JapPage extends StatelessWidget {
 
 class MalaPainter extends CustomPainter {
   final int filled;
-  final Color on, off;
-  MalaPainter(this.filled, this.on, this.off);
-  @override
-  void paint(Canvas canvas, Size size) {
-    final c = size.center(Offset.zero);
-    final r = size.width / 2 - 16;
-    for (var i = 0; i < 108; i++) {
-      final a = -math.pi / 2 + 2 * math.pi * i / 108;
-      final pos = c + Offset(math.cos(a), math.sin(a)) * r;
-      final last = i == filled - 1;
-      canvas.drawCircle(
-        pos,
-        last ? 7.0 : 3.8,
-        Paint()..color = last ? const Color(0xFFFFB300) : (i < filled ? on : off),
-      );
-    }
-  }
+  MalaPainter(this.filled);
 
-  @override
-  bool shouldRepaint(MalaPainter o) => o.filled != filled || o.on != on || o.off != off;
-}
-
-class StatsPage extends StatelessWidget {
-  const StatsPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: store,
-      builder: (context, _) {
-        final s = store;
-        final items = [
-          ['🪷', '${s.grand}', 'Total Jap'],
-          ['🗓️', '${s.activeDays.length}', 'Days Practiced'],
-          ['🏆', '${s.best}', 'Best Day'],
-          ['📿', '${s.grand ~/ 108}', 'Malas Completed'],
-          ['🔥', '${s.streak}', 'Current Streak'],
-          ['⭐', '${s.longest}', 'Longest Streak'],
-        ];
-        final now = DateTime.now();
-        final week = [for (var i = 6; i >= 0; i--) DateTime(now.year, now.month, now.day - i)];
-        final vals = week.map((d) => s.total(dkey(d))).toList();
-        final mx = math.max(1, vals.fold<int>(0, (a, b) => math.max(a, b)));
-        const dn = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-        return ListView(padding: const EdgeInsets.all(16), children: [
-          Text('Jap Statistics 📊',
-              style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 10,
-            crossAxisSpacing: 10,
-            childAspectRatio: 1.5,
-            children: [
-              for (final it in items)
-                Card(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(it[0], style: const TextStyle(fontSize: 22)),
-                    Text(it[1], style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-                    Text(it[2], style: const TextStyle(fontSize: 12)),
-                  ]),
-                ),
-            ],
-          ),
-          const SizedBox(height: 16),
-          const Text('Last 7 days', style: TextStyle(fontWeight: FontWeight.w600)),
-          const SizedBox(height: 8),
-          SizedBox(
-            height: 110,
-            child: Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              for (var i = 0; i < 7; i++)
-                Expanded(
-                  child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    Container(
-                      height: 4 + 70 * vals[i] / mx,
-                      margin: const EdgeInsets.symmetric(horizontal: 6),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(dn[week[i].weekday - 1], style: const TextStyle(fontSize: 11)),
-                  ]),
-                ),
-            ]),
-          ),
-          const SizedBox(height: 16),
-          const Text('📜 Jap History', style: TextStyle(fontWeight: FontWeight.w600)),
-          if (s.activeDays.isEmpty)
-            const Padding(padding: EdgeInsets.all(12), child: Text('No jap yet. Begin today 🪷')),
-          for (final k in s.activeDays.reversed.take(30))
-            ListTile(
-              dense: true,
-              title: Text(k),
-              trailing: Text('${s.total(k)} jap', style: const TextStyle(fontWeight: FontWeight.bold)),
-            ),
-        ]);
-      },
-    );
-  }
-}
-
-class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: store,
-      builder: (context, _) => ListView(padding: const EdgeInsets.all(16), children: [
-        Text('Settings ⚙️',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 16),
-        const Text('🎨 Appearance'),
-        const SizedBox(height: 8),
-        SegmentedButton<int>(
-          segments: const [
-            ButtonSegment(value: 1, label: Text('☀️ Light')),
-            ButtonSegment(value: 2, label: Text('🌙 Dark')),
-            ButtonSegment(value: 0, label: Text('📱 System')),
-          ],
-          selected: {store.theme},
-          onSelectionChanged: (v) {
-            store.theme = v.first;
-            store.save();
-          },
-        ),
-        SwitchListTile(
-          title: const Text('📳 Vibration'),
-          value: store.vib,
-          onChanged: (v) {
-            store.vib = v;
-            store.save();
-          },
-        ),
-        SwitchListTile(
-          title: const Text('🔔 Bead sound'),
-          value: store.snd,
-          onChanged: (v) {
-            store.snd = v;
-            store.save();
-          },
-        ),
-      ]),
-    );
-  }
-}
+  void bead(Canvas c, Offset p, double r, Color col) {
+    final shader = RadialGradient(
+      center: const Alignment(-0.4, -0.4),
+      colors: [Color.lerp(col, Colors.white, 0.55)!, col, Color.lerp(col, Colors.black, 0.5)!],
+      stops: const [0, 0.45, 1],
+    ).createShader(Rect.fromCircle(center: p, radius: r));
+    c.d
